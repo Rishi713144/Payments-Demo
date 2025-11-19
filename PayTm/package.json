@@ -4,7 +4,5 @@
     "react-router-dom": "^7.9.6"
   }
 
-  "scripts": {
-    "build": "cd frontend && npm install && npm run build"
-  }
+  
 }
