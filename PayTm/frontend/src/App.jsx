@@ -47,7 +47,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* Home page with button */}
+         
           <Route path="/" element={<HomePage />} />
 
           <Route path="/signup" element={<Signup />} />
