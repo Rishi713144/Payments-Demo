@@ -7,7 +7,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors({
-  origin: "https://payment-app-delta-two.vercel.app"   
+  origin: ["https://payment-app-delta-two.vercel.app"]
 }));
 app.use(express.json());
 
