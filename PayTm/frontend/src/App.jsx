@@ -10,32 +10,73 @@ import { Dashboard } from "./pages/Dashboard";
 import { SendMoney } from "./pages/SendMoney";
 function HomePage() {
   const navigate = useNavigate();
+
   return (
-    <div style={{
-      height: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#f4f6f9",
-      flexDirection: "column",
-      gap: "20px"
-    }}>
-      <h1>Welcome!</h1>
-      <button
-        onClick={() => navigate("/signup")}
+    <div
+      style={{
+        height: "100vh",
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "white",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
+      <h1
         style={{
-          padding: "14px 32px",
-          fontSize: "18px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+          fontSize: "48px",
+          fontWeight: "800",
+          marginBottom: "16px",
         }}
       >
-        Get Started – Sign Up
-      </button>
+        Welcome to PayFast
+      </h1>
+
+      <p style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.95 }}>
+        Send money instantly. Zero fees. Fully secure.
+      </p>
+
+      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+        <button
+          onClick={() => navigate("/signup")}
+          style={{
+            padding: "16px 36px",
+            fontSize: "18px",
+            fontWeight: "600",
+            backgroundColor: "white",
+            color: "#635bff",
+            border: "none",
+            borderRadius: "12px",
+            cursor: "pointer",
+            boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
+            transition: "all 0.3s",
+          }}
+          onMouseOver={(e) => (e.target.style.transform = "translateY(-3px)")}
+          onMouseOut={(e) => (e.target.style.transform = "translateY(0)")}
+        >
+          Get Started
+        </button>
+
+        <button
+          onClick={() => navigate("/signin")}
+          style={{
+            padding: "16px 36px",
+            fontSize: "18px",
+            fontWeight: "600",
+            backgroundColor: "transparent",
+            color: "white",
+            border: "2px solid rgba(255,255,255,0.5)",
+            borderRadius: "12px,
+            cursor: "pointer",
+            backdropFilter: "blur(10px)",
+          }}
+        >
+          Sign In
+        </button>
+      </div>
     </div>
   );
 }
