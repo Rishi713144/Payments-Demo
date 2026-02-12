@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
-import { Button } from "./Button"
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../config";
+import { Button } from "./Button";
 
 export const Users = () => {
     const [users, setUsers] = useState([]);
@@ -9,18 +10,18 @@ export const Users = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.get("https://payment-app-lked.vercel.app/api/v1/user/bulk?filter=" + filter, {
+        axios.get(`${BACKEND_URL}/api/v1/user/bulk?filter=` + filter, {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
-        .then(response => {
-            setUsers(response.data.user || []);
-        })
-        .catch(err => {
-            console.log("Failed to load users:", err);
-            setUsers([]);
-        });
+            .then(response => {
+                setUsers(response.data.user || []);
+            })
+            .catch(err => {
+                console.log("Failed to load users:", err);
+                setUsers([]);
+            });
     }, [filter]);
 
     return <>

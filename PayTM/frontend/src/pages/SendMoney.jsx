@@ -1,8 +1,11 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { BACKEND_URL } from "../config";
 
 export const SendMoney = () => {
+
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [amount, setAmount] = useState("");
@@ -13,6 +16,7 @@ export const SendMoney = () => {
     const name = searchParams.get("name");
 
     const handleTransfer = async () => {
+
         const transferAmount = parseFloat(amount);
 
         if (!amount || isNaN(transferAmount) || transferAmount <= 0) {
@@ -24,7 +28,7 @@ export const SendMoney = () => {
 
         try {
             await axios.post(
-                "https://payment-app-lked.vercel.app/api/v1/account/transfer",
+                `${BACKEND_URL}/api/v1/account/transfer`,
                 {
                     to: id,
                     amount: transferAmount
@@ -41,8 +45,8 @@ export const SendMoney = () => {
 
         } catch (error) {
             const errorMsg = error.response?.data?.message ||
-                           error.message ||
-                           "Transfer failed. Please try again later.";
+                error.message ||
+                "Transfer failed. Please try again later.";
             alert(`Transfer Failed: ${errorMsg}`);
             console.error("Transfer error:", error);
         } finally {
@@ -119,11 +123,10 @@ export const SendMoney = () => {
                         <button
                             onClick={handleTransfer}
                             disabled={loading || !amount || parseFloat(amount) <= 0}
-                            className={`w-full font-medium py-3 rounded-md transition duration-200 flex items-center justify-center gap-2 text-white ${
-                                loading || !amount || parseFloat(amount) <= 0
-                                    ? "bg-gray-400 cursor-not-allowed"
-                                    : "bg-green-500 hover:bg-green-600 shadow-md"
-                            }`}
+                            className={`w-full font-medium py-3 rounded-md transition duration-200 flex items-center justify-center gap-2 text-white ${loading || !amount || parseFloat(amount) <= 0
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-green-500 hover:bg-green-600 shadow-md"
+                                }`}
                         >
                             {loading ? (
                                 <>

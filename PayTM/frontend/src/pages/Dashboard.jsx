@@ -1,8 +1,10 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import { Users } from "../components/Users";
-import axios from "axios";
+
+import { BACKEND_URL } from "../config";
 
 export const Dashboard = () => {
     const [balance, setBalance] = useState("0");
@@ -11,7 +13,7 @@ export const Dashboard = () => {
     const fetchBalance = async () => {
         try {
             const response = await axios.get(
-                "https://payment-app-lked.vercel.app/api/v1/account/balance",
+                `${BACKEND_URL}/api/v1/account/balance`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
