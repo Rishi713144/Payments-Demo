@@ -4,10 +4,9 @@ const rootRouter = require("../routes/index");
 
 const app = express();
 
-// CORS FIRST – before all other middleware
 app.use(cors({
-  origin: "https://payment-app-delta-two.vercel.app",
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // ← add OPTIONS for preflight
+  origin: "https://paymentsdemorishi.vercel.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
