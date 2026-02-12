@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require("cors");
 const rootRouter = require("../routes/index");
@@ -6,7 +7,7 @@ const app = express();
 
 app.use(cors({
   origin: "https://paymentsdemorishi.vercel.app",
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 

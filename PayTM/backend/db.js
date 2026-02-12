@@ -1,7 +1,7 @@
 // backend/db.js
 const mongoose = require('mongoose');
-const Schema= mongoose.Schema
-mongoose.connect("mongodb+srv:///PayTM")
+const Schema = mongoose.Schema
+mongoose.connect(process.env.MONGODB_URI);
 
 // Create a Schema for Users
 const userSchema = new Schema({
@@ -49,6 +49,6 @@ const Account = mongoose.model('Account', accountSchema);
 const User = mongoose.model('User', userSchema);
 
 module.exports = {
-	User,
+    User,
     Account
 };
